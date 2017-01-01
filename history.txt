@@ -1,0 +1,62 @@
+package com.example.venkatesh.history;
+
+import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ListView listView = (ListView) findViewById(R.id.listView);
+
+        String[] history = new String[]{"Date1", "Date2","Date3","Date4","Date5","Date6","Date7","Date8","Date9","Date10","Date11","Date12","Date13","Date14","Date15"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, history);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                AlertDialog.Builder androidDialogBuilder=new AlertDialog.Builder(MainActivity.this);
+                androidDialogBuilder.setTitle("Booking Details");
+                androidDialogBuilder.setMessage("Mall1\nSlot1\n1/1/2017\n12:30-15:30");
+                androidDialogBuilder.setPositiveButton("Ok",null);
+                androidDialogBuilder.show();
+            }
+        });
+
+
+
+        listView.setAdapter(adapter);
+
+    }
+
+}
+
+
+-----------------------------------------------------------------
+XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.venkatesh.history.MainActivity">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView">
+    </ListView>
+
+</RelativeLayout>
